@@ -8,7 +8,6 @@ add_compile_options(-std=c++11)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-            ros_toon
             unicampania_helper_lib
             )
 
@@ -104,8 +103,8 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
  INCLUDE_DIRS include
  LIBRARIES ${PROJECT_NAME}
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib #lapack maybe needed here
+ CATKIN_DEPENDS unicampania_helper_lib
+#  DEPENDS system_lib
 )
 
 ###########
