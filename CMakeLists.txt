@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(unicampania_learning_lib)
+project(sun_learning_lib)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -8,7 +8,7 @@ add_compile_options(-std=c++11)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-            unicampania_helper_lib
+            sun_helper_lib
             )
 
 ## System dependencies are found with CMake's conventions
@@ -103,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
  INCLUDE_DIRS include
  LIBRARIES ${PROJECT_NAME}
- CATKIN_DEPENDS unicampania_helper_lib
+ CATKIN_DEPENDS sun_helper_lib
 #  DEPENDS system_lib
 )
 
