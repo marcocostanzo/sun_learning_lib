@@ -24,7 +24,7 @@
 #include "learn_algs/learn_algs.h"
 
 
-double findZero(double initial_point, FZero_FCN Jcst, FZero_FCN gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, double MAX_GD_ITER, bool& b_max_iter ){
+double findZero(double initial_point, const boost::function<double(double)>& Jcst, const boost::function<double(double)>& gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, double MAX_GD_ITER, bool& b_max_iter ){
 
     double JJ = Jcst(initial_point);
 	bool converge = false;
@@ -51,7 +51,7 @@ double findZero(double initial_point, FZero_FCN Jcst, FZero_FCN gradJ, double GD
     return x;
 }
 
-double findZero(double initial_point, FZero_FCN Jcst, FZero_FCN gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, double MAX_GD_ITER ){
+double findZero(double initial_point, const boost::function<double(double)>& Jcst, const boost::function<double(double)>& gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, double MAX_GD_ITER ){
     bool b_max_iter;
     return findZero(initial_point, Jcst, gradJ, GD_GAIN, GD_COST_TOL, lambda, MAX_GD_ITER, b_max_iter );
 }
