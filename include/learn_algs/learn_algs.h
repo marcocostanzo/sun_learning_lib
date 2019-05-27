@@ -27,8 +27,8 @@
 #include <cmath>
 #include <boost/function.hpp>
 
-double findZero(double initial_point, const boost::function<double(double)>& Jcst, const boost::function<double(double)>& gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, double MAX_GD_ITER );
+double findZero(double initial_point, const boost::function<double(double)>& Jcst, const boost::function<double(double)>& gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, int MAX_GD_ITER );
 
-double findZero(double initial_point, const boost::function<double(double)>& Jcst, const boost::function<double(double)>& gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, double MAX_GD_ITER, bool& b_max_iter );
+double findZero(double initial_point, const boost::function<double(double)>& Jcst, const boost::function<double(double)>& gradJ, double GD_GAIN, double GD_COST_TOL, double lambda, int MAX_GD_ITER, bool& b_max_iter );
 
 #endif
