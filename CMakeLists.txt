@@ -125,9 +125,8 @@ include_directories(
 
 
 add_library(${PROJECT_NAME}
-    src/ANN/ANN_Layer.cpp
-    src/ANN/ANN.cpp
     src/learn_algs/learn_algs.cpp
+    src/ANN/ANN_File_Reader.cpp
 )
 
 ## Add cmake target dependencies of the library
