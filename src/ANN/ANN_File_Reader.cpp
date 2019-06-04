@@ -70,7 +70,7 @@ ANN readANNFile( const std::string file_path )
 		printf(BOLDRED "Error opening file..." CRESET);
 		printf(BOLDBLUE " %s\n" CRESET,file_path.c_str());
         printf(BOLDBLUE " Does the file exist?\n" CRESET);
-		exit(-1);
+		throw std::runtime_error("Could not open file");
 	}
 
     int layer_type = readIntegerFile(f);
@@ -105,7 +105,7 @@ ANN readANNFile( const std::string file_path )
             {
                 printf(BOLDRED "Error Non Valid Layer type %d" CRESET, layer_type);
                 fclose(f);
-                exit(-1);
+                throw std::runtime_error("Non Valid Layer type");
             }
         }
 
@@ -209,7 +209,7 @@ ANN_Fully_Connected_Layer readFullyConnectedLayerFile(FILE *f)
         {
             printf(BOLDRED "Error Non Valid activation_fcn_type %d" CRESET, activation_fcn_type);
             fclose(f);
-            exit(-1);
+            throw std::runtime_error("Non Valid activation_fcn_type");
         }
     }
 }
