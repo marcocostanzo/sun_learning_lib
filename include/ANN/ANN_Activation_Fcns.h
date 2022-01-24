@@ -44,4 +44,12 @@ inline TooN::Vector<> ANN_LINEAR_ACTIVATION_FCN(const TooN::Vector<>& x)
     return x; 
 }
 
+inline TooN::Vector<> ANN_RELU_ACTIVATION_FCN(const TooN::Vector<>& x)
+{ 
+    TooN::Vector<> out = TooN::Zeros(x.size());
+    for(int i = 0; i < x.size(); i++ )
+        out[i] = (x[i] > 0.0) ? x[i] : 0.0;
+	return out;
+}
+
 #endif

@@ -50,9 +50,12 @@
 #define MAPMINMAX_LAYER_CODE            2
 #define MAPMINMAX_REVERSE_LAYER_CODE    3
 #define FULLY_CONNECTED_LAYER_CODE      4
+#define MAPSTD_LAYER_CODE               5
+#define MAPSTD_REVERSE_LAYER_CODE       6
 
 #define SIGMOID_FUNCTION_CODE   1
 #define LINEAR_FUNCTION_CODE    2
+#define RELU_FUNCTION_CODE    3
 
 inline int readIntegerFile(FILE *f);
 inline TooN::Matrix<> readFileM(FILE *f, unsigned int n_r, unsigned int n_c);
@@ -99,6 +102,16 @@ ANN readANNFile( const std::string file_path )
             case FULLY_CONNECTED_LAYER_CODE:
             {
                 ann.push_back_Layer( readFullyConnectedLayerFile(f) );
+                break;
+            }
+            case MAPSTD_LAYER_CODE:
+            {
+                ann.push_back_Layer( readMapStdLayerFile(f) );
+                break;
+            }
+            case MAPSTD_REVERSE_LAYER_CODE:
+            {
+                ann.push_back_Layer( readMapStdLayerFile(f, true) );
                 break;
             }
             default:
@@ -205,6 +218,14 @@ ANN_Fully_Connected_Layer readFullyConnectedLayerFile(FILE *f)
                 ANN_LINEAR_ACTIVATION_FCN
             );
         }
+        case RELU_FUNCTION_CODE:
+        {
+            return ANN_Fully_Connected_Layer( 
+                W, 
+                b, 
+                ANN_RELU_ACTIVATION_FCN
+            );
+        }
         default:
         {
             printf(BOLDRED "Error Non Valid activation_fcn_type %d" CRESET, activation_fcn_type);
@@ -212,4 +233,18 @@ ANN_Fully_Connected_Layer readFullyConnectedLayerFile(FILE *f)
             throw std::runtime_error("Non Valid activation_fcn_type");
         }
     }
+}
+
+ANN_MapStd readMapStdLayerFile(FILE *f, bool b_reverse)
+{
+    int numElements = readIntegerFile(f);
+
+    TooN::Vector<> mean = readFileV(f, numElements);
+    TooN::Vector<> std_dev = readFileV(f, numElements);
+
+    return ANN_MapStd( 
+        mean, 
+        std_dev,
+        b_reverse
+    );
 }
