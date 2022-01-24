@@ -23,12 +23,14 @@
 #include <ANN/ANN.h>
 #include <ANN/ANN_PCA_Layer.h>
 #include <ANN/ANN_MapMinMax.h>
+#include <ANN/ANN_MapStd.h>
 #include <ANN/ANN_Fully_Connected_Layer.h>
 #include <ANN/ANN_Activation_Fcns.h>
 
 ANN readANNFile( const std::string file_path );
 ANN_PCA_Layer readPCALayerFile(FILE *f);
 ANN_MapMinMax readMapMinMaxLayerFile(FILE *f, bool b_reverse = false);
+ANN_MapStd readMapStdLayerFile(FILE *f, bool b_reverse = false);
 ANN_Fully_Connected_Layer readFullyConnectedLayerFile(FILE *f);
 
 #endif
